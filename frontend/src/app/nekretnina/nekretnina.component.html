@@ -1,0 +1,269 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-toolbar class="toolbar">
+                    <img src="assets/logo.png">
+                    <span class="sp">nekretnine.com</span>
+                </mat-toolbar>
+            </div>
+        </div>
+        
+        <app-navbar *ngIf='!nijeUlogovan'></app-navbar>
+
+        <!--Navbar-->
+     <mdb-navbar *ngIf='nijeUlogovan' SideClass="navbar navbar-1 navbar-light" [containerInside]="false">
+
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+            <a class="navbar-brand" routerLink="/">Početna</a>
+            <a class="navbar-brand" routerLink="/prijava">Prijava</a>
+            <a class="navbar-brand" routerLink="/registracija">Registracija</a>
+        </mdb-navbar-brand>
+
+        <!-- Collapsible content -->
+        <links>
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink='/'>Početna<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink='/prijava'>Prijava<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link waves-light" routerLink='/registracija' mdbWavesEffect>Registracija</a>
+                </li>
+            </ul>
+            <!-- Links -->
+        </links>
+        <!-- Collapsible content -->
+    </mdb-navbar>
+    <!--/.Navbar-->
+    <div *ngIf='fleg'>
+        <mdb-carousel class="carousel slide carousel-fade" [type]="'carousel-thumbnails'" [animation]="'fade'">
+            <mdb-carousel-item  *ngFor='let s of nekretnina.slike'>
+              <img class="d-block w-100" src="assets/{{s}}" alt="First slide">
+            </mdb-carousel-item>
+        </mdb-carousel>
+        
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="naziv">
+                    <h4>{{nekretnina.naziv}}</h4>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji0">
+                    <div class="col-8 col-sm-8 inform">
+                        <span>{{nekretnina.grad}}&nbsp;-&nbsp;{{nekretnina.opstina}}&nbsp;-&nbsp;{{nekretnina.mikrolokacija}} - {{nekretnina.ulica}}</span>
+                    </div>
+                    <div class="col-4 col-sm-4 infSpan" [class.zelenaCena]='cenaKvadrat<=prosecnaCena'  [class.crvenaCena]='cenaKvadrat>prosecnaCena'>
+                        <span>{{nekretnina.cena}}e</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji">
+                    <div class="col-2 col-sm-2 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Tip</span><br/></li>
+                            <li><span>{{nekretnina.tip}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 col-sm-2 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Kvadratura</span></li>
+                            <li><span>{{nekretnina.kvadratura}}m2</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 col-sm-2 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Soba</span></li>
+                            <li><span>{{nekretnina.brSoba}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 col-sm-2 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Sprat</span></li>
+                            <li><span>{{nekretnina.sprat}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 col-sm-2 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Ukupna spratnost</span></li>
+                            <li><span>{{nekretnina.ukupnaSpratnost}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 col-sm-2 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Parking</span></li>
+                            <li><span>{{nekretnina.parking}}</span></li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji2">
+                    <div class="col-3 col-sm-3 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Oglašivač</span><br/></li>
+                            <li><span>{{nekretnina.oglasivac}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-3 col-sm-3 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">God izgradnje</span></li>
+                            <li><span>{{nekretnina.godIzgradnje}}.</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-3 col-sm-3 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Stanje nekretnine</span></li>
+                            <li><span>{{nekretnina.stanje}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-3 col-sm-3 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Tip grejanja</span></li>
+                            <li><span>{{nekretnina.tipGrejanja}}</span></li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji3">
+                    <div class="col-12 col-sm-12 inf">
+                        <ul style="list-style-type:none;">
+                            <li><span class="podnaslov">Opis</span><br/></li>
+                            <li><span>{{nekretnina.opis}}<br/>
+                            Prosečna cena na lokaciji je: <strong>{{prosecnaCena}}e/m2</strong></span></li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji4">
+                    <div class="col-12 col-sm-12 inf4">
+                        <label *ngIf="terasa"><input type="checkbox" checked disabled>Terasa</label>
+                        <label *ngIf="terasa==false"><input type="checkbox" disabled>Terasa</label>
+                        <label *ngIf="podrum"><input type="checkbox" checked disabled>Podrum</label>
+                        <label *ngIf="!podrum" ><input type="checkbox" disabled>Podrum</label>
+                        <label *ngIf="internet"><input type="checkbox" checked disabled>Internet</label>
+                        <label *ngIf="!internet"><input type="checkbox" disabled>Internet</label>
+                        <label *ngIf="lodja"><input type="checkbox" checked disabled>Lođa</label>
+                        <label *ngIf="!lodja"><input type="checkbox" disabled>Lođa</label>
+                        <label *ngIf="garaza"><input type="checkbox" checked disabled>Garaža</label>
+                        <label *ngIf="!garaza"><input type="checkbox" disabled>Garaža</label>
+                    </div>
+                    <div class="col-12 col-sm-12 inf4">
+                        <label *ngIf="interfon"><input type="checkbox" checked disabled>Interfon</label>
+                        <label *ngIf="!interfon"><input type="checkbox" disabled>Interfon</label>
+                        <label *ngIf="balkon"><input type="checkbox" checked disabled>Franc. balkon</label>
+                        <label *ngIf="!balkon"><input type="checkbox" disabled>Franc. balkon</label>
+                        <label *ngIf="basta"><input type="checkbox" checked disabled>Sa baštom</label>
+                        <label *ngIf="!basta"><input type="checkbox" disabled>Sa baštom</label>
+                        <label *ngIf="telefon"><input type="checkbox" checked disabled>Telefon</label>
+                        <label *ngIf="!telefon"><input type="checkbox" disabled>Telefon</label>
+                        <label *ngIf="lift"><input type="checkbox" checked disabled>Lift</label>
+                        <label *ngIf="!lift"><input type="checkbox" disabled>Lift</label>
+                        <label *ngIf="klima"><input type="checkbox" checked disabled>Klima</label>
+                        <label *ngIf="!klima"><input type="checkbox" disabled>Klima</label>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row" *ngIf='prodavac'>
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji5">
+                    <div class="col-12 col-sm-12 inf7">
+                        <strong style="font-size: 22px;">Kontakt</strong>
+                    </div>
+                    <div class="col-12 col-sm-12 inf5">
+                        <label>{{oglasivac.ime}}&nbsp;{{oglasivac.prezime}}</label><br/>
+                    </div>
+                    <div class="col-12 col-sm-12 inf6">
+                        <a (click)='kliknuto()' title='Pritisnite za broj telefona'>
+                            <strong *ngIf='!this.kliknuo' style="font-size: 20px;">+</strong>
+                        </a>
+                        <strong *ngIf='this.kliknuo'>{{oglasivac.telefon}}</strong>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row" *ngIf='agent'>
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row detalji5">
+                    <div class="col-12 col-sm-12 inf7">
+                        <strong style="font-size: 22px;">Kontakt</strong>
+                    </div>
+                    <div class="col-12 col-sm-12 inf5">
+                        <label>{{agencija.naziv}}</label><br/>
+                    </div>
+                    <div class="col-12 col-sm-12 inf5">
+                        <label><strong>Mesto i ulica:</strong>&nbsp;{{agencija.grad}}&nbsp;-&nbsp;{{agencija.adresa}}</label><br/>
+                    </div>
+                    <div class="col-12 col-sm-12 inf5">
+                        <label><strong>PIB:</strong>&nbsp;{{agencija.PIB}}</label><br/>
+                    </div>
+                    <div class="col-12 col-sm-12 inf5">
+                        <label><strong>Agent:</strong>&nbsp;{{oglasivac.ime}}&nbsp;{{oglasivac.prezime}},&nbsp;{{oglasivac.brojLicence}}</label><br/>
+                    </div>
+                    <div class="col-12 col-sm-12 inf6">
+                        <a (click)='kliknuto()' title='Pritisnite za broj telefona'>
+                            <strong *ngIf='!this.kliknuo' style="font-size: 20px;">+</strong>
+                        </a>
+                        <strong *ngIf='this.kliknuo'>{{oglasivac.telefon}}</strong>
+                    </div>
+                </div> 
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6 greska">
+               <button *ngIf='!nijeUlogovan' class="btn" (click)='omiljeni()'>Dodaj u omiljene</button>
+               <button *ngIf='nijeUlogovan' class="btn" (click)='prijava()'>Dodaj u omiljene</button>
+               <span style="color: red;">{{greska}}</span><br/>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+        <app-footer></app-footer>
+    </div>
+  
+</div>

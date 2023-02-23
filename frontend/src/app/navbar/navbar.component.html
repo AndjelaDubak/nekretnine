@@ -1,0 +1,54 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-1 navbar-light" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand>
+        <a class="navbar-brand" routerLink='/kupac' *ngIf="korisnik.tip=='kupac'">Početna</a>
+        <a class="navbar-brand" routerLink='/oglasivac' *ngIf="korisnik.tip=='oglasivac'">Početna</a>
+        <a class="navbar-brand" routerLink='/administrator' *ngIf="korisnik.tip=='administrator'">Početna</a>
+        <a class="navbar-brand" routerLink='/dodavanjeKorisnika' *ngIf="korisnik.tip=='administrator'">Dodavanje korisnika</a>
+        <a class="navbar-brand" routerLink='/dodavanjeAgencije' *ngIf="korisnik.tip=='administrator'">Dodavanje agencije</a>
+        <a class="navbar-brand" routerLink='/dodavanjeMikrolokacije' *ngIf="korisnik.tip=='administrator'">Dodavanje mikrolokacije</a>
+        <a class="navbar-brand" routerLink='/brisanjeMikrolokacije' *ngIf="korisnik.tip=='administrator'">Brisanje mikrolokacije</a>
+        <a class="navbar-brand" routerLink='/dodavanjeNekretnine' *ngIf="korisnik.tip=='oglasivac'">Dodaj nekretninu</a>
+        <a class="navbar-brand" routerLink='/naprednaPretraga' *ngIf="korisnik.tip=='kupac'">Napredna pretraga</a>
+        <a class="navbar-brand" *ngIf="korisnik.tip=='kupac'" routerLink='/mojNalog'>Moj nalog</a>
+        <a class="navbar-brand" *ngIf="korisnik.tip=='oglasivac'" routerLink='/mojNalogO'>Moj nalog</a>
+        <a class="navbar-brand" routerLink='/promenaLozinke'>Promena lozinke</a>
+        <a class="navbar-brand" routerLink='/' (click)='odjava()'>Odjava</a>
+    </mdb-navbar-brand>
+
+    <!-- Collapsible content -->
+    <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/kupac' *ngIf="korisnik.tip=='kupac'">Početna</a>
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/oglasivac' *ngIf="korisnik.tip=='oglasivac'">Početna</a>
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/administrator' *ngIf="korisnik.tip=='administrator'">Početna</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/dodavanjeKorisnika' *ngIf="korisnik.tip=='administrator'">Dodavanje korisnika</a>
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/naprednaPretraga' *ngIf="korisnik.tip=='kupac'">Napredna pretraga</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/dodavanjeAgencije' *ngIf="korisnik.tip=='administrator'">Dodavanje agencije</a>
+                <a class="nav-link waves-light" *ngIf="korisnik.tip=='kupac'" routerLink='/mojNalog' mdbWavesEffect routerLink='/mojNalog'>Moj nalog</a>
+                <a class="nav-link waves-light" *ngIf="korisnik.tip=='oglasivac'" routerLink='/mojNalogO' mdbWavesEffect routerLink='/mojNalog'>Moj nalog</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/dodavanjeMikrolokacije' *ngIf="korisnik.tip=='administrator'">Dodavanje mikrolokacije</a>
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/promenaLozinke'>Promena lozinke</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/brisanjeMikrolokacije' *ngIf="korisnik.tip=='administrator'">Brisanje mikrolokacije</a>
+                <a class="nav-link waves-light" mdbWavesEffect routerLink='/' (click)='odjava()'>Odjava</a>
+            </li>
+        </ul>
+        <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->

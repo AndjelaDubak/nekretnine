@@ -1,0 +1,52 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-toolbar class="toolbar">
+                    <img src="assets/logo.png">
+                    <span class="sp">nekretnine.com</span>
+                </mat-toolbar>
+            </div>
+        </div>
+        
+        <app-navbar></app-navbar>
+
+        <!-- Section: Team v.1 -->
+<section class="team-section text-center my-5">
+
+    <!-- Section heading -->
+    <h2 class="h1-responsive font-weight-bold my-5"></h2>
+    <!-- Section description -->
+    <p class="grey-text w-responsive mx-auto mb-5"></p>
+  
+    <!-- Grid row -->
+    <div class="row" *ngFor="let n of korisnici">
+        <div class="col-lg-3"></div>
+     <!-- Grid column -->
+        <div class="col-xl-6 col-lg-6">
+            <div class="single-item1">
+                <div class="avatar d-md-flex justify-content-left">
+                    <img src="assets/{{n.slika}}" class="rounded z-depth-1" style="width: 250px;">
+                    </div>
+                    <div style="width: 100%;margin-left: 20px;">
+                    <h4 class="font-weight-bold" style="color:goldenrod;margin-top: 1%;">{{n.ime}} {{n.prezime}}</h4>
+                    <h6 class="font-weight-bold grey-text">{{n.korIme}}</h6>
+                    <p class="grey-text">{{n.email}}</p>
+                    <p class="grey-text">{{n.telefon}}</p>
+                    <button class="btn" (click)="prihvati(n)" *ngIf="n.odobren=='ne'">Prihvati</button>
+                    <button class="btn" (click)="odbij(n)" *ngIf="n.odobren=='ne'">Odbij</button>
+                    <button class="btn" (click)="izmeni(n)" *ngIf="n.odobren=='da'">Izmeni</button>
+                    <button class="btn" (click)="obrisi(n)" *ngIf="n.odobren=='da'">Obriši</button>
+                    </div>
+            </div>
+        </div>
+      <!-- Grid column -->
+      <div class="col-lg-3"></div>
+    </div>
+    <!-- Grid row -->
+  
+  </section>
+  <!-- Section: Team v.1 -->
+  <app-footer></app-footer>
+    </div>
+</div>

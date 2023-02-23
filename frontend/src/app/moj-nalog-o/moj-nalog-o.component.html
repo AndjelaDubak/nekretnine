@@ -1,0 +1,167 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-toolbar class="toolbar">
+                    <img src="assets/logo.png">
+                    <span class="sp">nekretnine.com</span>
+                </mat-toolbar>
+            </div>
+        </div>
+        
+        <app-navbar></app-navbar>
+  
+        <!-- Section: Team v.2 -->
+        <section class="team-section text-center">
+        
+            <!-- Grid row -->
+            <div class="row text-center">
+        
+            <!-- Grid column -->
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mb-md-0 mb-5">
+                <div class="avatar mx-auto">
+                <img src="assets/{{korisnik.slika}}" class="rounded-circle z-depth-1-half">
+                </div>
+                <h4 class="font-weight-bold black-text my-4">{{korisnik.ime}} {{korisnik.prezime}}</h4>
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4 single-item1">
+                        <table style="margin-left: 10%;color: lightgoldenrodyellow;">
+                            <tr>
+                                <th style="text-align: left;">Korisnicko ime: </th>
+                                <td>{{korisnik.korIme}}</td>
+                            </tr>
+                            <tr>
+                                <th>Lozinka: </th>
+                                <td>{{korisnik.lozinka}}</td>
+                            </tr>
+                            <tr>
+                                <th>Grad: </th>
+                                <td>{{korisnik.grad}}</td>
+                            </tr>
+                            <tr>
+                                <th>Datum rodjenja: </th>
+                                <td>{{korisnik.datumRodjenja}}</td>
+                            </tr>
+                            <tr>
+                                <th>Telefon: </th>
+                                <td>{{korisnik.telefon}}</td>
+                            </tr>
+                            <tr>
+                                <th>Email: </th>
+                                <td>{{korisnik.email}}</td>
+                            </tr>
+                            <tr>
+                                <th>Agencija: </th>
+                                <td>{{korisnik.agencija}}</td>
+                            </tr>
+                            <tr>
+                                <th>Broj licence: </th>
+                                <td>{{korisnik.brojLicence}}</td>
+                            </tr>
+                        </table>
+                </div>
+                <div class="col-lg-4"></div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <!-- Grid column -->
+        
+            </div>
+            <!-- Grid row -->
+            <hr/>
+    
+        </section>
+  <!-- Section: Team v.2 -->
+
+        <div class="row main">
+            <div class="col-lg-4"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 prijava">
+                <div class="form-container">
+                    <div class="form-content">
+                        <div class="login-form-header">
+                            <div class="logo">
+                                <img src="assets/logo.png" height="110" width="100">
+                            </div>
+                        </div>
+            
+                        <div class="form-body">
+                            <input type='text' placeholder="Telefon" class="form-input" [(ngModel)]="telefon">
+                            <input type="text"  placeholder="Email" class="form-input" [(ngModel)]="email">
+                            <br/>
+                            <select class="sel" [(ngModel)]='agencija'>
+                                <option *ngFor='let a of agencije' class="opt" value="{{a.naziv}}">{{a.naziv}}</option>
+                            </select>
+                            <span class="greska">{{greska}}</span>
+                        </div>
+            
+                        <div>
+                            <button class="btn" (click)='changeKorisnik()'> 
+                                Promeni 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="col-lg-4"></div> 
+        </div>
+        <div class="row main">
+            <div class="col-lg-4"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 prijava">
+                <div class="form-container">
+                    <div class="form-content">
+                        <div class="form-body">
+                            <label style="color: lightgoldenrodyellow;">Izaberite mikrolokaciju za prikaz grafikona:</label>
+                            <select class="sel" [(ngModel)]='mikrolokacija'>
+                                <option *ngFor='let a of nekrJedinstvene' class="opt" value="{{a.mikrolokacija}}">{{a.mikrolokacija}}</option>
+                            </select>
+                            <button class="btn" (click)='prikazi()'> 
+                                Prikaži
+                            </button>
+                            <button class="btn" style="margin-top: 1%;" (click)='prikaziAgencija()' *ngIf="korisnik.agencija!=''"> 
+                                Prikaži grafikon za agenciju
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>   
+            <div class="col-lg-4"></div> 
+        </div>
+       <div class="row main" *ngIf="zaPrikaz">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 single-item3">
+                <div style="display: block">
+                    <canvas mdbChart
+                        [chartType]="chartType"
+                        [datasets]="chartDatasets"
+                        [labels]="chartLabels"
+                        [colors]="chartColors"
+                        [options]="chartOptions"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                  </div>
+            </div>
+            <div class="col-lg-2"></div>
+       </div>
+       <div class="row main" *ngIf="korisnik.agencija!='' && prikaz">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 single-item3">
+            <div style="display: block">
+                <canvas mdbChart
+                    [chartType]="chartType"
+                    [datasets]="chartDatasets1"
+                    [labels]="chartLabels"
+                    [colors]="chartColors"
+                    [options]="chartOptions"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+                </canvas>
+              </div>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+        <app-footer></app-footer>
+    </div>
+</div>

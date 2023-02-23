@@ -1,0 +1,30 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const nekretnina_controller_1 = require("../controllers/nekretnina.controller");
+const agencija_controller_1 = require("../controllers/agencija.controller");
+const korisnik_controller_1 = require("../controllers/korisnik.controller");
+const mikrolokacija_controller_1 = require("../controllers/mikrolokacija.controller");
+const korisnikRouter = express_1.default.Router();
+korisnikRouter.route('/prijava').post((req, res) => new korisnik_controller_1.KorisnikController().prijava(req, res));
+korisnikRouter.route('/getAgencije').get((req, res) => new agencija_controller_1.AgencijaController().getAgencije(req, res));
+korisnikRouter.route('/getKorisnike').get((req, res) => new korisnik_controller_1.KorisnikController().getKorisnike(req, res));
+korisnikRouter.route('/registracija').post((req, res) => new korisnik_controller_1.KorisnikController().registracija(req, res));
+korisnikRouter.route('/getNekretnine').get((req, res) => new nekretnina_controller_1.NekretninaController().getNekretnine(req, res));
+korisnikRouter.route('/promenaLozinke').post((req, res) => new korisnik_controller_1.KorisnikController().promenaLozinke(req, res));
+korisnikRouter.route('/getNeodobreneKorisnike').get((req, res) => new korisnik_controller_1.KorisnikController().getNeodobreneKorisnike(req, res));
+korisnikRouter.route('/prihvatiKorisnika').post((req, res) => new korisnik_controller_1.KorisnikController().prihvatiKorisnika(req, res));
+korisnikRouter.route('/deleteKorisnik').post((req, res) => new korisnik_controller_1.KorisnikController().deleteKorisnik(req, res));
+korisnikRouter.route('/changeKorisnikAdm').post((req, res) => new korisnik_controller_1.KorisnikController().changeKorisnikAdm(req, res));
+korisnikRouter.route('/addAgencija').post((req, res) => new agencija_controller_1.AgencijaController().addAgencija(req, res));
+korisnikRouter.route('/getMikrolokacije').get((req, res) => new mikrolokacija_controller_1.MikrolokacijaController().getMikrolokacije(req, res));
+korisnikRouter.route('/addMikrolokacija').post((req, res) => new mikrolokacija_controller_1.MikrolokacijaController().addMikrolokacija(req, res));
+korisnikRouter.route('/deleteMikrolokacija').post((req, res) => new mikrolokacija_controller_1.MikrolokacijaController().deleteMikrolokacija(req, res));
+korisnikRouter.route('/getJedinstveneMikrolokacije').get((req, res) => new mikrolokacija_controller_1.MikrolokacijaController().getJedinstveneMikrolokacije(req, res));
+korisnikRouter.route('/getJedinstveneGradove').get((req, res) => new mikrolokacija_controller_1.MikrolokacijaController().getJedinstveneGradove(req, res));
+korisnikRouter.route('/getJedinstveneOpstine').get((req, res) => new mikrolokacija_controller_1.MikrolokacijaController().getJedinstveneOpstine(req, res));
+exports.default = korisnikRouter;
+//# sourceMappingURL=korisnik.router.js.map

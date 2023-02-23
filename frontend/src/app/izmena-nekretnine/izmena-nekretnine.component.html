@@ -1,0 +1,184 @@
+<div class="container-fluid pozadina">
+    <mat-toolbar class="toolbar">
+        <img src="assets/logo.png">
+        <span class="sp">nekretnine.com</span>
+    </mat-toolbar>
+    
+    <app-navbar></app-navbar>
+  
+    <div class="row">
+        <div class="col-lg-6"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 prijava">
+            <div class="form-container">
+            <div class="form-content">
+                <div class="login-form-header">
+                    <div class="logo">
+                        <img src="assets/logo.png" height="110" width="100">
+                    </div>
+                </div>
+    
+                <div class="form-body">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <div class="selTd">
+                                    Tip nekretnine:
+                                    <select class="sel" [(ngModel)]='tip'>
+                                        <option class="opt" value="stan">Stan</option>
+                                        <option class="opt" value="kuca">Kuća</option>
+                                        <option class="opt" value="vikendica">Vikendica</option>
+                                        <option class="opt" value="lokal">Lokal</option>
+                                        <option class="opt" value="magacin">Magacin</option>
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type='text' placeholder="Naziv" class="form-input" [(ngModel)]="naziv">
+                            </td>
+                            <td>
+                                <input type='text' placeholder="Broj soba" class="form-input" [(ngModel)]="brSoba">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type='text' placeholder="Grad" class="form-input" [(ngModel)]="grad">
+                            </td>
+                            <td>
+                                <input type='text' placeholder="Opstina" class="form-input" [(ngModel)]="opstina">
+                            </td>
+                        </tr>
+                        <tr>
+                           
+                            <td>
+                                <input type='text' placeholder="Mikrolokacija" class="form-input" [(ngModel)]="mikrolokacija">
+                            </td>
+                            <td>
+                                <input type='text' placeholder="Ulica" class="form-input" [(ngModel)]="ulica">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text"  placeholder="Kvadratura" class="form-input" [(ngModel)]="kvadratura">
+                            </td>
+                            <td>
+                                <input type="text"  placeholder="Cena" class="form-input" [(ngModel)]="cena">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text"  placeholder="Godina izgradnje" class="form-input" [(ngModel)]="godIzgradnje">
+                            </td>
+                            <td>
+                                <input type="text"  placeholder="Parking" class="form-input" [(ngModel)]="parking">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="radioB2">
+                                <label style="padding-right: 20px;">Stanje:</label>
+                                <input type="radio" id="izvorno" name="izvorno" (change)="onChangeStanje('Izvorno', $event)" [checked]="postojiStanje('Izvorno')">
+                                <label for="izvorno" style="padding-right: 20px;">Izvorno</label>
+                                <input type="radio" id="renovirano" name="izvorno" (change)="onChangeStanje('Renovirano', $event)" [checked]="postojiStanje('Renovirano')">
+                                <label for="renovirano" style="padding-right: 20px;">Renovirano</label>
+                                <input type="radio" id="LUX" name="izvorno" (change)="onChangeStanje('LUX', $event)" [checked]="postojiStanje('LUX')">
+                                <label for="LUX" style="padding-right: 20px;">LUX</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="radioB2">
+                                <label style="padding-right: 15px;">Tip grejanja:</label>
+                                <input type="radio" id="CG" name="CG" (change)="onChangeGrejanje('CG', $event)" [checked]="postojiGrejanje('CG')">
+                                <label for="CG" style="padding-right: 15px;">CG</label>
+                                <input type="radio" id="EG" name="CG" (change)="onChangeGrejanje('EG', $event)" [checked]="postojiGrejanje('EG')">
+                                <label for="EG" style="padding-right: 15px;">EG</label>
+                                <input type="radio" id="TA" name="CG" (change)="onChangeGrejanje('TA', $event)" [checked]="postojiGrejanje('TA')">
+                                <label for="TA" style="padding-right: 15px;">TA</label>
+                                <input type="radio" id="gas" name="CG" (change)="onChangeGrejanje('Gas', $event)" [checked]="postojiGrejanje('Gas')">
+                                <label for="gas" style="padding-right: 15px;">Gas</label>
+                                <input type="radio" id="podno" name="CG" (change)="onChangeGrejanje('Podno', $event)" [checked]="postojiGrejanje('Podno')">
+                                <label for="podno" style="padding-right: 5px;">Podno</label>
+                                <input type="radio" id="pumpe" name="CG" (change)="onChangeGrejanje('Toplotne pumpe', $event)" [checked]="postojiGrejanje('Toplotne pumpe')">
+                                <label for="pumpe" style="padding-right: 15px;">T pumpe</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text"  placeholder="Sprat" class="form-input" [(ngModel)]="sprat">
+                            </td>
+                            <td>
+                                <input type="text"  placeholder="Ukupna spratnost" class="form-input" [(ngModel)]="ukupnaSpratnost">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text"  placeholder="Mesecne rezije" class="form-input" [(ngModel)]="mesecneRezije">
+                            </td>
+                            <td>
+                                <input type="text"  placeholder="Opis" class="form-input" [(ngModel)]="opis">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="radioB2">
+                                Linije:
+                                <label *ngFor="let l of linijePrikaz">
+                                    <input type="checkbox" id="{{l.naziv}}" name="{{l.naziv}}" (change)="onChangeLinije(l.naziv, $event)" [checked]="postojiLinija(l.naziv)">
+                                    <label for="{{l.naziv}}" style="padding-right: 10px;">{{l.naziv}}</label>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="radioB2">
+                                <input type="checkbox" id="terasa" name="terasa" (change)="onChangeKarakteristike('Terasa', $event)" [checked]="postoji('Terasa')">
+                                <label for="terasa" style="padding-right: 10px;">Terasa</label>
+                                <input type="checkbox" id="podrum" name="podrum" (change)="onChangeKarakteristike('Podrum', $event)" [checked]="postoji('Podrum')">
+                                <label for="podrum" style="padding-right: 20px;">Podrum</label>
+                                <input type="checkbox" id="internet" name="internet" (change)="onChangeKarakteristike('Internet', $event)" [checked]="postoji('Internet')">
+                                <label for="internet" style="padding-right: 20px;">Internet</label>
+                                <input type="checkbox" id="lodja" name="lodja" (change)="onChangeKarakteristike('Lodja', $event)" [checked]="postoji('Lodja')">
+                                <label for="lodja" style="padding-right: 20px;">Lodja</label>
+                                <input type="checkbox" id="garaza" name="garaza" (change)="onChangeKarakteristike('Garaza', $event)" [checked]="postoji('Garaza')">
+                                <label for="garaza" style="padding-right: 20px;">Garaza</label>
+                                <input type="checkbox" id="interfon" name="interfon" (change)="onChangeKarakteristike('Interfon', $event)" [checked]="postoji('Interfon')">
+                                <label for="interfon" style="padding-right: 20px;">Interfon</label>
+                                <input type="checkbox" id="balkon" name="balkon" (change)="onChangeKarakteristike('Balkon', $event)" [checked]="postoji('Balkon')">
+                                <label for="balkon" style="padding-right: 20px;">Balkon</label>
+                                <input type="checkbox" id="basta" name="basta" (change)="onChangeKarakteristike('Basta', $event)" [checked]="postoji('Basta')">
+                                <label for="basta" style="padding-right: 20px;">Basta</label>
+                                <input type="checkbox" id="telefon" name="telefon" (change)="onChangeKarakteristike('Telefon', $event)" [checked]="postoji('Telefon')">
+                                <label for="telefon" style="padding-right: 20px;">Telefon</label>
+                                <input type="checkbox" id="lift" name="lift" (change)="onChangeKarakteristike('Lift', $event)" [checked]="postoji('Lift')">
+                                <label for="lift" style="padding-right: 20px;">Lift</label>
+                                <input type="checkbox" id="klima" name="klima" (change)="onChangeKarakteristike('Klima', $event)" [checked]="postoji('Klima')">
+                                <label for="klima" style="padding-right: 20px;">Klima</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="file" multiple #Image (change)="fileChangeEvent($event)" class="form-choose">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span class="greska">{{greska}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" (click)='changeNekretnina()'><button class="btn"> 
+                                Izmeni nekretninu
+                            </button></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+    
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-2"></div> 
+    </div>
+     <app-footer></app-footer>
+</div>

@@ -1,0 +1,240 @@
+<div class="container-fluid pozadina">
+    <div class="row">
+        <div class="col-sm-12">
+            <mat-toolbar class="toolbar">
+                <img src="assets/logo.png">
+                <span class="sp">nekretnine.com</span>
+            </mat-toolbar>
+        </div>
+    </div>
+     <!--Navbar-->
+     <mdb-navbar SideClass="navbar navbar-1 navbar-light" [containerInside]="false">
+
+        <!-- Navbar brand -->
+        <mdb-navbar-brand>
+            <a class="navbar-brand" routerLink="/">Početna</a>
+            <a class="navbar-brand" routerLink="/prijava">Prijava</a>
+            <a class="navbar-brand" routerLink="/registracija">Registracija</a>
+        </mdb-navbar-brand>
+
+        <!-- Collapsible content -->
+        <links>
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink='/'>Početna<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light" mdbWavesEffect routerLink='/prijava'>Prijava<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                   <a class="nav-link waves-light" routerLink='/registracija' mdbWavesEffect>Registracija</a>
+                </li>
+            </ul>
+            <!-- Links -->
+        </links>
+        <!-- Collapsible content -->
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+
+
+    <!--Section: Products v.2-->
+<section class="text-center pb-3 my-5" *ngIf="nekretnine.length>0">
+    <!--Section heading-->
+    <div class="top">
+        <div class="topDiv">
+            <h2><a routerLink='/prijava' class="prij">Prijavite se</a> i odaberite vašu nekretninu!</h2>
+        </div>
+    </div>
+    <!--Section description-->
+    <p class="grey-text pb-5"></p>
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-3">
+        <!--Card-->
+        <mdb-card class="card-ecommerce">
+          <!--Card image-->
+          <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+            <mdb-card-img src="assets/{{nekretnine[0].slike[nekretnine[0].randomSlika]}}" class="mg"></mdb-card-img>
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!--Card image-->
+          <!--Card content-->
+          <mdb-card-body class="text-center no-padding">
+            <!--Category & Title-->
+            <h4 class="card-title">
+                <strong>
+                  <a routerLink='/nekretnina' (click)="nekretnina(nekretnine[0])">{{nekretnine[0].naziv}}</a>
+                </strong>
+              </h4>
+
+            <!--Description-->
+            <mdb-card-text>{{nekretnine[0].linije}}</mdb-card-text>
+            <!--Card footer-->
+              <span class="float-center font-weight-bold price">
+                <strong>{{nekretnine[0].cena}}e</strong>
+              </span>
+          </mdb-card-body>
+          <!--Card content-->
+        </mdb-card>
+        <!--Card-->
+      </div>
+      <!--Grid column-->
+      
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-3">
+        <!--Card-->
+        <mdb-card class="card-ecommerce">
+          <!--Card image-->
+          <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+            <mdb-card-img src="assets/{{nekretnine[1].slike[nekretnine[1].randomSlika]}}"></mdb-card-img>
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!--Card image-->
+          <!--Card content-->
+          <mdb-card-body class="text-center no-padding">
+            <!--Category & Title-->
+            <h4 class="card-title">
+                <strong>
+                  <a routerLink='/nekretnina' (click)="nekretnina(nekretnine[1])">{{nekretnine[1].naziv}}</a>
+                </strong>
+              </h4>
+
+            <!--Description-->
+            <mdb-card-text>{{nekretnine[1].linije}}</mdb-card-text>
+            <!--Card footer-->
+              <span class="float-center font-weight-bold price">
+                <strong>{{nekretnine[1].cena}}e</strong>
+              </span>
+          </mdb-card-body>
+          <!--Card content-->
+        </mdb-card>
+        <!--Card-->
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-12 mb-3">
+        <!--Card-->
+        <mdb-card class="card-ecommerce">
+          <!--Card image-->
+          <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+            <mdb-card-img src="assets/{{nekretnine[2].slike[nekretnine[2].randomSlika]}}"></mdb-card-img>
+            <a>
+              <div class="mask rgba-white-slight"></div>
+            </a>
+          </div>
+          <!--Card image-->
+          <!--Card content-->
+          <mdb-card-body class="text-center no-padding">
+            <!--Category & Title-->
+            <h4 class="card-title">
+                <strong>
+                  <a routerLink='/nekretnina' (click)="nekretnina(nekretnine[2])">{{nekretnine[2].naziv}}</a>
+                </strong>
+              </h4>
+
+            <!--Description-->
+            <mdb-card-text>{{nekretnine[2].linije}}</mdb-card-text>
+            <!--Card footer-->
+              <span class="float-center font-weight-bold price">
+                <strong>{{nekretnine[2].cena}}e</strong>
+              </span>
+          </mdb-card-body>
+          <!--Card content-->
+        </mdb-card>
+        <!--Card-->
+      </div>
+      <!--Grid column-->
+
+    </div>
+    <!--Grid row-->
+
+
+     <!--Grid row-->
+     <div class="row">
+       <div class="col-lg-2"></div>
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-3">
+          <!--Card-->
+          <mdb-card class="card-ecommerce">
+            <!--Card image-->
+            <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+              <mdb-card-img src="assets/{{nekretnine[3].slike[nekretnine[3].randomSlika]}}"></mdb-card-img>
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card image-->
+            <!--Card content-->
+            <mdb-card-body class="text-center no-padding">
+              <!--Category & Title-->
+              <h4 class="card-title">
+                  <strong>
+                    <a routerLink='/nekretnina' (click)="nekretnina(nekretnine[3])">{{nekretnine[3].naziv}}</a>
+                  </strong>
+                </h4>
+  
+              <!--Description-->
+              <mdb-card-text>{{nekretnine[3].linije}}</mdb-card-text>
+              <!--Card footer-->
+                <span class="float-center font-weight-bold price">
+                  <strong>{{nekretnine[3].cena}}e</strong>
+                </span>
+            </mdb-card-body>
+            <!--Card content-->
+          </mdb-card>
+          <!--Card-->
+        </div>
+        <!--Grid column-->
+        
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-3">
+          <!--Card-->
+          <mdb-card class="card-ecommerce">
+            <!--Card image-->
+            <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+              <mdb-card-img src="assets/{{nekretnine[4].slike[nekretnine[4].randomSlika]}}"></mdb-card-img>
+              <a>
+                <div class="mask rgba-white-slight"></div>
+              </a>
+            </div>
+            <!--Card image-->
+            <!--Card content-->
+            <mdb-card-body class="text-center no-padding">
+              <!--Category & Title-->
+              <h4 class="card-title">
+                  <strong>
+                    <a routerLink='/nekretnina' (click)="nekretnina(nekretnine[4])">{{nekretnine[4].naziv}}</a>
+                  </strong>
+                </h4>
+  
+              <!--Description-->
+              <mdb-card-text>{{nekretnine[4].linije}}</mdb-card-text>
+              <!--Card footer-->
+                <span class="float-center font-weight-bold price">
+                  <strong>{{nekretnine[4].cena}}e</strong>
+                </span>
+            </mdb-card-body>
+            <!--Card content-->
+          </mdb-card>
+          <!--Card-->
+        </div>
+        <!--Grid column-->
+  
+        <div class="col-lg-2"></div>
+      </div>
+      <!--Grid row-->
+
+  </section>
+  <!--Section: Products v.2-->
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,117 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-toolbar class="toolbar">
+                    <img src="assets/logo.png">
+                    <span class="sp">nekretnine.com</span>
+                </mat-toolbar>
+            </div>
+        </div>
+        
+        <app-navbar></app-navbar>
+        <div *ngIf="prvaStrana">
+            <div class="row main" *ngFor='let n of nekretnine1'>
+                <div class="col-lg-4"></div>
+                <div class="col-sm-12 col-lg-6" *ngIf="sveNekretnine.length>0">
+                    <div class="row single-item">
+                        <div class="col-12 col-sm-6 slikaNekr">
+                            <div class="divNekr">
+                                <a (click)="nekretnina(n)"><img src="assets/{{n.slike[0]}}" class="nekrImg"></a>
+                            </div>
+                        </div>
+                        <div class="col-10 col-sm-4">
+                            <div class="zaglavlje">
+                                <a (click)="nekretnina(n)">{{n.naziv}}</a>
+                            </div>
+                            <div class="meta">
+                                <span>{{n.grad}},&nbsp;{{n.opstina}},&nbsp;{{n.mikrolokacija}}</span><br/>
+                            </div>
+                            <div class="meta">
+                                <span>{{n.kvadratura}}&nbsp;m2</span>
+                            </div>
+                            <div class="meta">
+                                <span>Soba: {{n.brSoba}}</span>
+                            </div>
+                            <div class="meta">
+                                <span>Sprat: {{n.sprat}}</span>
+                            </div>
+                            <div class="meta">
+                                <span>{{n.opis}}</span>
+                            </div>
+                            <div class="meta">
+                                <span>Prosečna cena: {{getProsecnaCena(n)}}e</span>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 cosak">
+                            <div class="cena">{{n.cena}}e</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2"></div>
+            </div>
+        </div>
+        <div *ngIf="drugaStrana">
+            <div class="row main" *ngFor='let n of nekretnine2'>
+                <div class="col-lg-4"></div>
+                <div class="col-sm-12 col-lg-6" *ngIf="sveNekretnine.length>0">
+                    <div class="row single-item">
+                        <div class="col-12 col-sm-6 slikaNekr">
+                            <div class="divNekr">
+                                <a (click)="nekretnina(n)"><img src="assets/{{n.slike[0]}}" class="nekrImg"></a>
+                            </div>
+                        </div>
+                        <div class="col-10 col-sm-4">
+                            <div class="zaglavlje">
+                                <a (click)="nekretnina(n)">{{n.naziv}}</a>
+                            </div>
+                            <div class="meta">
+                                <span>{{n.grad}},&nbsp;{{n.opstina}},&nbsp;{{n.mikrolokacija}}</span><br/>
+                            </div>
+                            <div class="meta">
+                                <span>{{n.kvadratura}}&nbsp;m2</span>
+                            </div>
+                            <div class="meta">
+                                <span>Soba: {{n.brSoba}}</span>
+                            </div>
+                            <div class="meta">
+                                <span>Sprat: {{n.sprat}}</span>
+                            </div>
+                            <div class="meta">
+                                <span>{{n.opis}}</span>
+                            </div>
+                            <div class="meta">
+                                <span>Prosečna cena: {{getProsecnaCena(n)}}e</span>
+                            </div>
+                        </div>
+                        <div class="col-2 col-sm-2 cosak">
+                            <div class="cena">{{n.cena}}e</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2"></div>
+            </div>
+        </div>
+        <div class="row" *ngIf="nekretnine.length>10">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pg-amber" *ngIf = 'prvaStrana'>
+                      <li class="page-item" [class.active] ='prvaStrana && b==1' *ngFor="let b of niz">
+                        <a class="page-link" mdbWavesEffect (click)="promeniStranu()">{{b}} <span class="sr-only">(current)</span></a>
+                      </li>
+                    </ul>
+                    <ul class="pagination pg-amber" *ngIf = 'drugaStrana'>
+                        <li class="page-item" [class.active] ='drugaStrana && b==2' *ngFor="let b of niz">
+                          <a class="page-link" mdbWavesEffect (click)="promeniStranu()">{{b}} <span class="sr-only">(current)</span></a>
+                        </li>
+                      </ul>
+                  </nav>
+            </div>
+        </div>
+        <app-footer *ngIf='nekretnine.length>1'></app-footer>
+    </div>
+    <app-footer *ngIf='nekretnine.length==0 || nekretnine.length==1'></app-footer>
+</div>

@@ -1,0 +1,80 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-toolbar class="toolbar">
+                    <img src="assets/logo.png">
+                    <span class="sp">nekretnine.com</span>
+                </mat-toolbar>
+            </div>
+        </div>
+        
+        <app-navbar></app-navbar>
+  
+        <!-- Section: Team v.2 -->
+        <section class="team-section text-center">
+        
+            <!-- Grid row -->
+            <div class="row text-center">
+        
+            <!-- Grid column -->
+            <div class="col-md-2"></div>
+            <div class="col-md-8 mb-md-0 mb-5">
+                <div class="avatar mx-auto">
+                <img src="assets/{{korisnik.slika}}" class="rounded-circle z-depth-1-half">
+                </div>
+                <h4 class="font-weight-bold black-text my-4">{{korisnik.ime}} {{korisnik.prezime}}</h4>
+            </div>
+            <div class="col-md-2"></div>
+            <!-- Grid column -->
+        
+            </div>
+            <!-- Grid row -->
+            <hr/>
+    
+        </section>
+  <!-- Section: Team v.2 -->
+
+        <div class="row main" *ngFor='let n of nekretnine'>
+            <div class="col-lg-3"></div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="row single-item">
+                    <div class="col-12 col-sm-6 slikaNekr">
+                        <div class="divNekr">
+                            <a (click)="nekretnina(n)"><img src="assets/{{n.slike[0]}}" class="nekrImg"></a>
+                        </div>
+                    </div>
+                    <div class="col-10 col-sm-4">
+                        <div class="zaglavlje">
+                            <a (click)="nekretnina(n)">{{n.naziv}}</a>
+                        </div>
+                        <div class="meta">
+                            <span>{{n.grad}},&nbsp;{{n.opstina}},&nbsp;{{n.mikrolokacija}}</span><br/>
+                        </div>
+                        <div class="meta">
+                            <span>{{n.kvadratura}}&nbsp;m kvadratnih</span>
+                        </div>
+                        <div class="meta">
+                            <span>Soba: {{n.brSoba}}</span>
+                        </div>
+                        <div class="meta">
+                            <span>Sprat: {{n.sprat}}</span>
+                        </div>
+                        <div class="meta">
+                            <span>{{n.opis}}</span>
+                        </div>
+                        <div class="meta">
+                            <button class="btn" (click)='izbaci(n)'>Izbaci</button>
+                        </div>
+                    </div>
+                    <div class="col-2 col-sm-2 cosak">
+                        <div class="cena">{{n.cena}}e</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 col-lg-3"></div>
+            </div>
+        <app-footer *ngIf='nekretnine.length!=0'></app-footer>
+    </div>
+    <app-footer *ngIf='nekretnine.length==0'></app-footer>
+</div>

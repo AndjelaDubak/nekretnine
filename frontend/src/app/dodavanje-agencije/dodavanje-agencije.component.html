@@ -1,0 +1,64 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+    <mat-toolbar class="toolbar">
+        <img src="assets/logo.png">
+        <span class="sp">nekretnine.com</span>
+    </mat-toolbar>
+    
+    <app-navbar></app-navbar>
+  
+    <div class="row">
+        <div class="col-lg-7"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 prijava">
+            <div class="form-container">
+            <div class="form-content">
+                <div class="login-form-header">
+                    <div class="logo">
+                        <img src="assets/logo.png" height="110" width="100">
+                    </div>
+                </div>
+    
+                <div class="form-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type='text' placeholder="Naziv" class="form-input" [(ngModel)]='naziv'>
+                            </td>
+                            <td> <input type='text' placeholder="Adresa" class="form-input" [(ngModel)]='adresa'></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type='text' placeholder="Grad" class="form-input" [(ngModel)]='grad'>
+                            </td>
+                            <td>
+                                <input type='text' placeholder="Telefon" class="form-input" [(ngModel)]='telefon'>
+                            </td>
+                        </tr>
+                        <tr>
+                           
+                            <td>
+                                <input type='text' placeholder="PIB" class="form-input" [(ngModel)]='PIB'>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span class="greska">{{poruka}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button class="btn" (click)='addAgencija()'> 
+                                Dodaj agenciju
+                            </button></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+    
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-1"></div> 
+    </div>
+</div>
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,61 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+    <mat-toolbar class="toolbar">
+        <img src="assets/logo.png">
+        <span class="sp">nekretnine.com</span>
+    </mat-toolbar>
+    
+    <app-navbar></app-navbar>
+  
+    <div class="row" *ngFor="let m of mikrolokacije">
+        <div class="col-lg-7"></div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 prijava">
+            <div class="form-container">
+            <div class="form-content">
+                <div class="login-form-header">
+                    <div class="logo">
+                        <img src="assets/logo.png" height="110" width="100">
+                    </div>
+                </div>
+    
+                <div class="form-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type='text' placeholder="{{m.grad}}" class="form-input" [(ngModel)]='grad' disabled>
+                            </td>
+                            <td> 
+                                <input type='text' placeholder="{{m.opstina}}" class="form-input" [(ngModel)]='opstina' disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type='text' placeholder="{{m.naziv}}" class="form-input" [(ngModel)]='mikrolokacija' disabled>
+                            </td>
+                            <td>
+                                <input type='text' placeholder="{{m.ulica}}" class="form-input" [(ngModel)]='ulica' disabled>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <span class="greska">{{poruka}}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><button class="btn" (click)='deleteMikrolokacija(m)'> 
+                                Obrisi mikrolokaciju
+                            </button></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+    
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-1"></div> 
+    </div>
+    <app-footer *ngIf="mikrolokacije.length>1"></app-footer>
+</div>
+<app-footer *ngIf="mikrolokacije.length==1"></app-footer>
+</div>

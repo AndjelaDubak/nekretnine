@@ -1,0 +1,86 @@
+<div class="container-fluid pozadina">
+    <div class="ok">
+        <div class="row">
+            <div class="col-sm-12">
+                <mat-toolbar class="toolbar">
+                    <img src="assets/logo.png">
+                    <span class="sp">nekretnine.com</span>
+                </mat-toolbar>
+            </div>
+        </div>
+
+        <app-navbar></app-navbar>
+        
+        <div class="row main">
+            <div class="col-sm-2 col-md-2 col-lg-6"></div>
+            <div class="col-12 col-sm-8 col-md-8 col-lg-4 prijava">
+                <div class="form-container">
+                    <div class="form-content">
+                        <div class="login-form-header">
+                            <div class="logo">
+                                <img src="assets/logo.png" height="110" width="100">
+                            </div>
+                        </div>
+            
+                        <div class="form-body">
+                            <div class="selTd">
+                                Tip nekretnine:
+                                <select class="sel" [(ngModel)]='tip'>
+                                    <option class="opt" value="stan">Stan</option>
+                                    <option class="opt" value="kuca">Kuća</option>
+                                    <option class="opt" value="vikendica">Vikendica</option>
+                                    <option class="opt" value="lokal">Lokal</option>
+                                    <option class="opt" value="magacin">Magacin</option>
+                                </select>
+                            </div>
+                            <div class="selTd">
+                                Grad:
+                                <select class="sel" [(ngModel)]='grad'>
+                                    <option class="opt" *ngFor="let g of gradovi" value="{{g}}">{{g}}</option>
+                                </select>
+                            </div>
+                            <div class="selTd">
+                                Opstina:
+                                <select class="sel" [(ngModel)]='opstina'>
+                                    <option class="opt" *ngFor="let o of opstine" value="{{o}}">{{o}}</option>
+                                </select>
+                            </div>
+                            <div class="selTd">
+                                Mikrolokacije:
+                                <select class="sel" [(ngModel)]='mikrolokacija'>
+                                    <option class="opt" *ngFor="let m of mikrolokacije" value="{{m}}">{{m}}</option>
+                                </select>
+                            </div>
+                            <input type="text" placeholder="Cena do(u evrima)" class="form-input" [(ngModel)]='cena'>
+                            <input type="text" placeholder="Kvadratura od" class="form-input" [(ngModel)]='kvadratura'>
+                            <div class="selTd">
+                                Broj soba:
+                                <select class="sel" [(ngModel)]='brSoba'>
+                                    <option class="opt" value="1">1</option>
+                                    <option class="opt" value="1.5">1.5</option>
+                                    <option class="opt" value="2">2</option>
+                                    <option class="opt" value="2.5">2.5</option>
+                                    <option class="opt" value="3">3</option>
+                                    <option class="opt" value="3.5">3.5</option>
+                                    <option class="opt" value="4">4</option>
+                                    <option class="opt" value="4.5">4.5</option>
+                                    <option class="opt" value="5">5+</option>
+                                </select>
+                            </div>
+                            <span class="greska">{{poruka}}</span>
+                        </div>
+            
+                        <div>
+                            <button class="btn" (click)='pretraga()'> 
+                                Pretraži
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+        <app-footer></app-footer>
+    </div>
+  
+</div>
